@@ -16,7 +16,13 @@ const ListTodo = () => {
 
   const deleteTodo = async (id) => {
     try {
-      const deleteTodo = await fetch(`http://localhost:5000/todos/${id}`, {
+      // const deleteTodo = await fetch(`http://localhost:5000/todos/${id}`, {
+      //   method: "DELETE"
+      // });
+      // const deleteTodo = await fetch(`https://michulee-todo-server.herokuapp.com/todos/${id}`, {
+      //   method: "DELETE"
+      // });
+      const deleteTodo = await fetch(`/todos/${id}`, {
         method: "DELETE"
       });
 
@@ -31,7 +37,10 @@ const ListTodo = () => {
   // get all todos
   const getTodos = async () => {
     try {
-      const response = await fetch("http://localhost:5000/todos");
+      // const response = await fetch("http://localhost:5000/todos");
+      // const response = await fetch("https://michulee-todo-server.herokuapp.com/todos");
+      const response = await fetch("/todos");
+
       const data = await response.json();
 
       setTodo(data);
@@ -40,17 +49,6 @@ const ListTodo = () => {
     }
   };
 
-  // get single todo
-  //TODO 1 - want to return object, or do i have to save as state??
-  const getTodo = async (id) => {
-    try {
-      // const response = await fetch(`http://localhost:5000/todos/${id}`)
-      return await fetch(`http://localhost:5000/todos/${id}`)
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
   useEffect(() => {
     getTodos();
   }, []);
@@ -58,15 +56,29 @@ const ListTodo = () => {
   const completeTodo = async (id) => {
       try {
         // promise
-        const body = await fetch(`http://localhost:5000/todos/${id}`)
+        // const body = await fetch(`http://localhost:5000/todos/${id}`)
+        // const body = await fetch(`https://michulee-todo-server.herokuapp.com/todos/${id}`)
+        const body = await fetch(`/todos/${id}`)
+
         const data = await body.json();
         const add = {description: data.description}
 
-        const response = await fetch('http://localhost:5000/completeTodos', {
+        // const response = await fetch('http://localhost:5000/completeTodos', {
+        //   method: "POST",
+        //   headers: {"Content-Type": "application/json"},
+        //   body: JSON.stringify(add)
+        // })
+        // const response = await fetch('https://michulee-todo-server.herokuapp.com/completeTodos', {
+        //   method: "POST",
+        //   headers: {"Content-Type": "application/json"},
+        //   body: JSON.stringify(add)
+        // })
+        const response = await fetch('/completeTodos', {
           method: "POST",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(add)
         })
+        
       } catch (error) {
         console.log(error.message)
       }

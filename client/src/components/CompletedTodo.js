@@ -57,7 +57,13 @@ const CompletedTodo = (props) => {
   // delete complete todo by id
   const deleteCompleteTodo = async (id) => {
     try {
-      const deleteTodo = await fetch(`http://localhost:5000/completeTodos/${id}`, {
+      // const deleteTodo = await fetch(`http://localhost:5000/completeTodos/${id}`, {
+      //   method: "DELETE"
+      // });
+      // const deleteTodo = await fetch(`https://michulee-todo-server.herokuapp.com/completeTodos/${id}`, {
+      //   method: "DELETE"
+      // });
+      const deleteTodo = await fetch(`/completeTodos/${id}`, {
         method: "DELETE"
       });
 
@@ -72,7 +78,10 @@ const CompletedTodo = (props) => {
   // get all complete todos
   const getCompleteTodos = async () => {
     try {
-      const response = await fetch("http://localhost:5000/completeTodos");
+      // const response = await fetch("http://localhost:5000/completeTodos");
+      // const response = await fetch("https://michulee-todo-server.herokuapp.com/completeTodos");
+      const response = await fetch("/completeTodos");
+
       const data = await response.json();
 
       setCompleteTodo(data);
@@ -88,15 +97,29 @@ const CompletedTodo = (props) => {
   const incompleteTodo = async (id) => {
       try {
         // promise
-        const body = await fetch(`http://localhost:5000/completeTodos/${id}`)
+        // const body = await fetch(`http://localhost:5000/completeTodos/${id}`)
+        // const body = await fetch(`https://michulee-todo-server.herokuapp.com/completeTodos/${id}`)
+        const body = await fetch(`/completeTodos/${id}`)
+
         const data = await body.json();
         const add = {description: data.description}
 
-        const response = await fetch('http://localhost:5000/todos', {
+        // const response = await fetch('http://localhost:5000/todos', {
+        //   method: "POST",
+        //   headers: {"Content-Type": "application/json"},
+        //   body: JSON.stringify(add)
+        // })
+        // const response = await fetch('https://michulee-todo-server.herokuapp.com/todos', {
+        //   method: "POST",
+        //   headers: {"Content-Type": "application/json"},
+        //   body: JSON.stringify(add)
+        // })
+        const response = await fetch('/todos', {
           method: "POST",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(add)
         })
+
       } catch (error) {
         console.log(error.message)
       }

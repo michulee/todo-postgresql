@@ -11,11 +11,23 @@ const InputTodo = () => {
         // e.preventDefault();
         try {
             const body = {description: text};
-            const response = await fetch('http://localhost:5000/todos', {
+
+            // const response = await fetch('http://localhost:5000/todos', {
+            //     method: "POST",
+            //     headers: {"Content-Type": "application/json"},
+            //     body: JSON.stringify(body)
+            // })
+            // const response = await fetch('https://michulee-todo-server.herokuapp.com/todos', {
+            //     method: "POST",
+            //     headers: {"Content-Type": "application/json"},
+            //     body: JSON.stringify(body)
+            // })
+            const response = await fetch('/todos', {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             })
+            
         } catch (error) {
             console.log(error.message)
         }

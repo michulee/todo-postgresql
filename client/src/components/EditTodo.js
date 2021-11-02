@@ -43,11 +43,23 @@ const EditTodo = ({text, id}) => {
       // this works too, description const will be key and it will show it's value in key-value pair, description: 'text'
       // const body = {description};
       const body = {description: description};
-      const response = await fetch(`http://localhost:5000/todos/${id}`, {
+
+      // const response = await fetch(`http://localhost:5000/todos/${id}`, {
+      //   method: "PUT",
+      //   headers: {"Content-Type": "application/json"},
+      //   body: JSON.stringify(body)
+      // })
+      // const response = await fetch(`https://michulee-todo-server.herokuapp.com/todos/${id}`, {
+      //   method: "PUT",
+      //   headers: {"Content-Type": "application/json"},
+      //   body: JSON.stringify(body)
+      // })
+      const response = await fetch(`/todos/${id}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(body)
       })
+
     } catch (error) {
       console.log(error.message)
     }
@@ -57,11 +69,23 @@ const EditTodo = ({text, id}) => {
       // this works too, description const will be key and it will show it's value in key-value pair, description: 'text'
       // const body = {description};
       const body = {description: description};
-      const response = await fetch(`http://localhost:5000/completeTodos/${id}`, {
+
+      // const response = await fetch(`http://localhost:5000/completeTodos/${id}`, {
+      //   method: "PUT",
+      //   headers: {"Content-Type": "application/json"},
+      //   body: JSON.stringify(body)
+      // })
+      // const response = await fetch(`https://michulee-todo-server.herokuapp.com/completeTodos/${id}`, {
+      //   method: "PUT",
+      //   headers: {"Content-Type": "application/json"},
+      //   body: JSON.stringify(body)
+      // })
+      const response = await fetch(`/completeTodos/${id}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(body)
       })
+      
     } catch (error) {
       console.log(error.message)
     }
