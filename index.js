@@ -8,22 +8,25 @@ const cors = require('cors');
 // for writing queries with psql
 const pool = require('./db');
 const path = require('path');
-const PORT = process.env.PATH
 
 //middleware
 app.use(cors());
 app.use(express.json()); //req.body
 
-// METHOD 1
-// app.use(expres.static('client/build'))
-// METHOD 2
-// app.use('/', expres.static('client/build'))
+
+// for development
+// app.use(express.static(path.join(__dirname, './client/build')))
 
 if(process.env.NODE_ENV === 'production') {
     console.log(__dirname);
-    console.log(path.join(__dirname, "./client/build"));
+    console.log(path.join(__dirname,  "./client/build"));
     // server static content
     // npm run build
+
+    // METHOD 1
+    // app.use(express.static('client/build'))
+    // METHOD 2
+    // app.use('/', express.static('client/build'))
     // METHOD 3
     app.use(express.static(path.join(__dirname, './client/build')))
 }
