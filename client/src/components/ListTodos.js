@@ -78,7 +78,7 @@ const ListTodo = () => {
         //   headers: {"Content-Type": "application/json"},
         //   body: JSON.stringify(add)
         // })
-        const response = await fetch('/completeTodos', {
+        const response = await fetch('/api/completeTodos', {
           method: "POST",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(add)
