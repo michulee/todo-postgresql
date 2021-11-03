@@ -22,7 +22,7 @@ const ListTodo = () => {
       // const deleteTodo = await fetch(`https://michulee-todo-server.herokuapp.com/todos/${id}`, {
       //   method: "DELETE"
       // });
-      const deleteTodo = await fetch(`/todos/${id}`, {
+      const deleteTodo = await fetch(`/api/todos/${id}`, {
         method: "DELETE"
       });
 
@@ -39,7 +39,12 @@ const ListTodo = () => {
     try {
       // const response = await fetch("http://localhost:5000/todos");
       // const response = await fetch("https://michulee-todo-server.herokuapp.com/todos");
-      const response = await fetch("/todos");
+      // BUG
+      /**
+       * GET https://michulee-todo.herokuapp.com/todos 503 (Service Unavailable)
+       * Unexpected token < in JSON at position 0
+       */
+      const response = await fetch("/api/todos");
 
       const data = await response.json();
 
@@ -58,7 +63,7 @@ const ListTodo = () => {
         // promise
         // const body = await fetch(`http://localhost:5000/todos/${id}`)
         // const body = await fetch(`https://michulee-todo-server.herokuapp.com/todos/${id}`)
-        const body = await fetch(`/todos/${id}`)
+        const body = await fetch(`/api/todos/${id}`)
 
         const data = await body.json();
         const add = {description: data.description}

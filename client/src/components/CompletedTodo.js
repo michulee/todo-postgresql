@@ -63,7 +63,7 @@ const CompletedTodo = (props) => {
       // const deleteTodo = await fetch(`https://michulee-todo-server.herokuapp.com/completeTodos/${id}`, {
       //   method: "DELETE"
       // });
-      const deleteTodo = await fetch(`/completeTodos/${id}`, {
+      const deleteTodo = await fetch(`/api/completeTodos/${id}`, {
         method: "DELETE"
       });
 
@@ -80,7 +80,12 @@ const CompletedTodo = (props) => {
     try {
       // const response = await fetch("http://localhost:5000/completeTodos");
       // const response = await fetch("https://michulee-todo-server.herokuapp.com/completeTodos");
-      const response = await fetch("/completeTodos");
+      // BUG
+      /**
+       * GET https://michulee-todo.herokuapp.com/completeTodos 503 (Service Unavailable)
+       * Unexpected token < in JSON at position 0
+       */
+      const response = await fetch("/api/completeTodos");
 
       const data = await response.json();
 
@@ -99,7 +104,7 @@ const CompletedTodo = (props) => {
         // promise
         // const body = await fetch(`http://localhost:5000/completeTodos/${id}`)
         // const body = await fetch(`https://michulee-todo-server.herokuapp.com/completeTodos/${id}`)
-        const body = await fetch(`/completeTodos/${id}`)
+        const body = await fetch(`/api/completeTodos/${id}`)
 
         const data = await body.json();
         const add = {description: data.description}
