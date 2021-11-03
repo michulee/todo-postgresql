@@ -131,7 +131,7 @@ const CompletedTodo = (props) => {
     deleteCompleteTodo(id);
 
     // BUG force refresh doesn't work because of the drawer for some reason
-    // window.location.href = '/';
+    window.location.href = '/';
   }
 
   if (completeTodo) {
