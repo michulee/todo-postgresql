@@ -45,7 +45,7 @@ console.log(path.join(__dirname, "./client/build"));
  * asynchronous is the ability to do something while waiting for something else to complete
  * concurrent is the ability to compute multiple things at the same time
  * */ 
-app.post('/todos', async(req, res) => {
+app.post('/api/todos', async(req, res) => {
     try {
         console.log(req.body)
         const {description} = req.body;
@@ -62,7 +62,7 @@ app.post('/todos', async(req, res) => {
 });
 
 // get all todo
-app.get('/todos', async(req, res) => {
+app.get('/api/todos', async(req, res) => {
     try {
         const allTodos = await pool.query('SELECT * FROM todo')
         res.json(allTodos.rows);
@@ -72,7 +72,7 @@ app.get('/todos', async(req, res) => {
 })
 
 // get a todo
-app.get('/todos/:id', async(req, res) => {
+app.get('/api/todos/:id', async(req, res) => {
     try {
         console.log('get :', req.params)
         const {id} = req.params;
@@ -85,7 +85,7 @@ app.get('/todos/:id', async(req, res) => {
 })
 
 // update a todo
-app.put('/todos/:id', async(req, res) => {
+app.put('/api/todos/:id', async(req, res) => {
     try {
         console.log('update: ', req.params)
         const {id} = req.params;
@@ -99,7 +99,7 @@ app.put('/todos/:id', async(req, res) => {
 })
 
 // delete a todo
-app.delete('/todos/:id', async(req, res) => {
+app.delete('/api/todos/:id', async(req, res) => {
     try {
         console.log('delete :', req.params)
         const {id} = req.params;
@@ -112,7 +112,7 @@ app.delete('/todos/:id', async(req, res) => {
 })
 
 // post single compmlete todo
-app.post('/completeTodos', async(req, res) => {
+app.post('/api/completeTodos', async(req, res) => {
     try {
         console.log(req.body)
         const {description} = req.body;
@@ -129,7 +129,7 @@ app.post('/completeTodos', async(req, res) => {
 });
 
 // get all complete todo
-app.get('/completeTodos', async(req, res) => {
+app.get('/api/completeTodos', async(req, res) => {
     try {
         const allTodos = await pool.query('SELECT * FROM completetodo')
         res.json(allTodos.rows);
@@ -139,7 +139,7 @@ app.get('/completeTodos', async(req, res) => {
 })
 
 // get a complete todo
-app.get('/completeTodos/:id', async(req, res) => {
+app.get('/api/completeTodos/:id', async(req, res) => {
     try {
         console.log('get :', req.params)
         const {id} = req.params;
@@ -152,7 +152,7 @@ app.get('/completeTodos/:id', async(req, res) => {
 })
 
 // BUG update a completeTodo
-app.put('/completeTodos/:id', async(req, res) => {
+app.put('/api/completeTodos/:id', async(req, res) => {
     try {
         console.log('update: ', req.params)
         const {id} = req.params;
@@ -166,7 +166,7 @@ app.put('/completeTodos/:id', async(req, res) => {
 })
 
 // delete a completeTodo
-app.delete('/completeTodos/:id', async(req, res) => {
+app.delete('/api/completeTodos/:id', async(req, res) => {
     try {
         console.log('delete :', req.params)
         const {id} = req.params;
