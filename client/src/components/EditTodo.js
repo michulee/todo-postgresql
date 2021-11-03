@@ -54,7 +54,7 @@ const EditTodo = ({text, id}) => {
       //   headers: {"Content-Type": "application/json"},
       //   body: JSON.stringify(body)
       // })
-      const response = await fetch(`/todos/${id}`, {
+      const response = await fetch(`/api/todos/${id}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(body)
@@ -80,7 +80,7 @@ const EditTodo = ({text, id}) => {
       //   headers: {"Content-Type": "application/json"},
       //   body: JSON.stringify(body)
       // })
-      const response = await fetch(`/completeTodos/${id}`, {
+      const response = await fetch(`/api/completeTodos/${id}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(body)
