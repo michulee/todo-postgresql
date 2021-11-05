@@ -131,7 +131,8 @@ const CompletedTodo = (props) => {
     deleteCompleteTodo(id);
 
     // BUG force refresh doesn't work because of the drawer for some reason
-    window.location.href = '/';
+    // CompleteTodoList updates without window.location.href
+    // window.location.href = '/';
   }
 
   if (completeTodo) {
@@ -147,7 +148,7 @@ const CompletedTodo = (props) => {
               },
             }}
           />
-          <Box sx={{ textAlign: 'center', pt: 1}} className="bottom">
+          <Box sx={{ textAlign: 'center', pt: 1}} className="bottom container">
             <Button onClick={toggleDrawer(true)}>Show Completed Tasks</Button>
           </Box>
           <SwipeableDrawer
@@ -164,24 +165,12 @@ const CompletedTodo = (props) => {
           >
             <StyledBox
               sx={{
-                position: 'absolute',
-                top: -drawerBleeding,
-                borderTopLeftRadius: 8,
-                borderTopRightRadius: 8,
-                visibility: 'visible',
-                right: 0,
-                left: 0,
-              }}
-            >
-              {/* <Puller sx={{background: 'white'}}/> */}
-              {/* <Typography sx={{ p: 2, color: 'text.secondary'}}> </Typography> */}
-            </StyledBox>
-            <StyledBox
-              sx={{
                 px: 2,
                 pb: 2,
                 height: '100%',
                 overflow: 'auto',
+                width: '1400px',
+                margin: '0 auto'
               }}
             >
               {/* TODO need to work on delete transition from completed to uncompleted */}

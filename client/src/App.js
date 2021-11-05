@@ -12,7 +12,7 @@ import AddIcon from '@mui/icons-material/Add';
 function App() {
   return (
     <>
-      <div className="todo">
+      <div className="todo container">
         <div className="header">
           <h1>Todo List</h1>
         </div>

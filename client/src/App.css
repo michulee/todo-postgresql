@@ -8,6 +8,9 @@
 .todo {
   height: 100vh;
   color: var(--color-text-color);
+}
+
+.container {
   max-width: 1440px;
   margin: 0 auto;
 }
