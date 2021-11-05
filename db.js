@@ -19,25 +19,25 @@ const devConfig = `postgresql://${process.env.DB_USER}:${process.env.DB_PASS}@${
 
 const proConfig = process.env.DATABASE_URL;
 
-// const pool = new Pool({
-//   connectionString:
-//     process.env.NODE_ENV === "production" ? proConfig : devConfig,
-//   // ssl: {
-//   //   rejectUnauthorized: false,
-//   // },
-// });
+const pool = new Pool({
+  connectionString:
+    process.env.NODE_ENV === "production" ? proConfig : devConfig,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
-if(process.env.NODE_ENV === "production") {
-  const pool = new Pool({
-    connectionString: proConfig,
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  });
-} else {
-  const pool = new Pool({
-    connectionString: devConfig,
-  });
-}
+// if(process.env.NODE_ENV === "production") {
+//   const pool = new Pool({
+//     connectionString: proConfig,
+//     ssl: {
+//       rejectUnauthorized: false,
+//     },
+//   });
+// } else {
+//   const pool = new Pool({
+//     connectionString: devConfig,
+//   });
+// }
 
 module.exports = pool;
